@@ -50,6 +50,9 @@ ACTIONS = {
 
 
 def reset():
+    """
+    Reset the position of x and y to 0
+    """
     global x, y
     x = initialX
     y = initialY
@@ -57,6 +60,9 @@ def reset():
 
 
 def in_target(newx, newy):
+    """
+    Check if the position of the machine is the position of the target
+    """
     if newx == targetX and newy == targetY:
         return True
     else:
@@ -64,6 +70,9 @@ def in_target(newx, newy):
 
 
 def in_bound(newx, newy):
+    """
+    Verify that the machine is in bound of the matrix
+    """
     if newx >= 0 and newx < maxx and newy >= 0 and newy < maxy:
         return True
     else:
@@ -71,6 +80,9 @@ def in_bound(newx, newy):
 
 
 def get_reward(newx, newy):
+    """
+    Give a reward to the machine for improvement
+    """
     if not in_bound(newx, newy):
         return -1.0
     if in_target(newx, newy):
@@ -80,6 +92,9 @@ def get_reward(newx, newy):
 
 
 def step(action):
+    """
+    Controll the movement of the machine
+    """
     global x, y
     xx, yy = ACTIONS[action]
     done = False
